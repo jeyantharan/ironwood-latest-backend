@@ -14,8 +14,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static("public"));
 
 const placeRoute = require("./route/place");
+const elementRoute = require("./route/element");
+
 
 app.use("/place", placeRoute);
+app.use("/element", elementRoute);
+
 
 
 

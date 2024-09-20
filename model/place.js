@@ -1,31 +1,50 @@
 const mongoose = require('mongoose')
 
+// module.exports = mongoose.model('Place', {
+//     Name: {
+//         type: String, 
+//         unique:true
+//     },
+//     Image: {
+//         type: String, 
+//     },
+//     Description: {
+//         type: String, 
+//     },
+//     ShortDescription: {
+//         type: String, 
+//     },
+//     Map:{
+//         type: String, 
+//     },
+//     Type:{
+//         type: String, 
+//     },
+//     DirMap:{
+//         type: String, 
+//     },
+//     Phone:{
+//         type: String,
+//     }
+
+
+// })
+
 module.exports = mongoose.model('Place', {
-    Name: {
-        type: String, 
-        unique:true
+    En:{
+        type:Object
     },
-    Image: {
-        type: String, 
+    De:{
+        type:Object
     },
-    Description: {
-        type: String, 
+    It:{
+        type:Object
     },
-    ShortDescription: {
-        type: String, 
-    },
-    Map:{
-        type: String, 
+    Cs:{
+        type:Object
     },
     Type:{
-        type: String, 
-    },
-    DirMap:{
-        type: String, 
-    },
-    Phone:{
-        type: String,
+        type: String
     }
-
 
 })
