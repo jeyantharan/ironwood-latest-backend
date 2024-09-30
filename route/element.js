@@ -7,5 +7,6 @@ router.get("/header/:lang",elementController.get_header);
 //get card element
 router.get("/card/:lang",elementController.get_card);
 
+router.patch("/updateNav",elementController.nav_element);
 
 module.exports = router;
