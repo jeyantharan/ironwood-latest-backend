@@ -1,7 +1,7 @@
 const elementModel = require("../model/element");
 const { translate , createEleObject } = require("../utils/translate");
 const placeModel = require("../model/place");
-
+const linkModel = require("../model/link")
 
 exports.get_header = async(req,res)=>{
     try {              
@@ -30,6 +30,19 @@ exports.get_card = async(req,res)=>{
 
 exports.nav_element = async (req, res) => {
   try {
+    
+    let Weather = req.body.Weather
+    let Event = req.body.Event
+
+    const lId = "67007123980ecf1fc361f65e"
+
+    
+ const updatedItem = await linkModel.findByIdAndUpdate(
+        "67007123980ecf1fc361f65e",
+        { Weather,Event },
+        { new: true}
+      );
+
 
     let nav = await elementModel.findById("66ec81a70c8100bf87810bbc");
 
@@ -38,13 +51,9 @@ exports.nav_element = async (req, res) => {
 
     for (let index = 0; index < getDetails.length; index++) {
       const element = getDetails[index];
-
-      // console.log(element);
       
 
       if(element.Type === req.body.ele4){
-        console.log(element.En.Type);
-        console.log(req.body.ele1);
         
         element.En.Type = req.body.ele1
         element.De.Type = req.body.ele1
@@ -52,8 +61,6 @@ exports.nav_element = async (req, res) => {
         element.Cs.Type = req.body.ele1
         element.Type = req.body.ele1
         element._id = element._id
-
-        console.log(element);
 
         let UType = await placeModel.findByIdAndUpdate(
           element._id,
@@ -63,9 +70,6 @@ exports.nav_element = async (req, res) => {
         
         
       }else if (element.Type === req.body.ele5) {
-        console.log(element.En.Type);
-
-        console.log(req.body.ele2);
         
         element.En.Type = req.body.ele2
         element.De.Type = req.body.ele2
@@ -74,7 +78,7 @@ exports.nav_element = async (req, res) => {
         element.Type = req.body.ele2
         element._id = element._id
 
-        console.log(element);
+       
         let UType = await placeModel.findByIdAndUpdate(
           element._id,
           element,
@@ -82,8 +86,6 @@ exports.nav_element = async (req, res) => {
         );
         
       } else if(element.Type === req.body.ele6) {
-        console.log(element.En.Type);
-        console.log(req.body.ele3);
         
 
         element.En.Type = req.body.ele3
@@ -93,8 +95,6 @@ exports.nav_element = async (req, res) => {
         element.Type = req.body.ele3
 
         element._id = element._id
-
-        console.log(element);
 
         let UType = await placeModel.findByIdAndUpdate(
           element._id,
@@ -215,15 +215,12 @@ exports.nav_element = async (req, res) => {
     sout1[9] = nav.It[9];
     sout1[10] = nav.It[10];
 
-    console.log(translateWords);
     
 
     let out2 = await translate(translateWords, "cs");
-    console.log(out2);
     
     let te2 = out2.split("---");
 
-    console.log(te2);
     
     const sout2 = [];
     sout2[0] = "Home";
@@ -270,3 +267,14 @@ exports.nav_element = async (req, res) => {
     res.status(409).send("Error " + error);
   }
 };
+
+exports.get_link = async(req,res)=>{
+  try {
+    const id  = "67007123980ecf1fc361f65e"
+    const getDetail = await linkModel.findById(id);
+  
+  res.status(200).send(getDetail);
+  } catch (error) {
+    res.status(409).send("Error " + error);
+  }
+}
