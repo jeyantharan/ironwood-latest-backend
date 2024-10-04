@@ -12,7 +12,7 @@ exports.translate = async(text,lang)=>{
    return response.data.data.translations[0].translatedText
 }
 
-exports.createObject = async(Name,Image,Description,ShortDescription,Map,Type,DirMap,Phone)=>{
+exports.createObject = async(Name,Image,Description,ShortDescription,Map,Type,DirMap,Phone,Link)=>{
     let obj = {
         Name:Name,
         Image:Image,
@@ -21,7 +21,8 @@ exports.createObject = async(Name,Image,Description,ShortDescription,Map,Type,Di
         Map:Map,
         Type:Type,
         DirMap:DirMap,
-        Phone:Phone
+        Phone:Phone,
+        Link:Link
     }
     return obj;
 }

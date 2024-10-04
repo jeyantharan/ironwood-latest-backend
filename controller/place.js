@@ -41,10 +41,10 @@ exports.create_place = async (req, res) => {
       if (err) {
         res.status(500).send(err);
       } else {    
-        enobjout = await createObject(sout3[0],result.url,sout3[1],sout3[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone);
-        deobjout = await createObject(sout[0],result.url,sout[1],sout[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone);
-        itobjout = await createObject(sout1[0],result.url,sout1[1],sout1[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone);
-        csobjout = await createObject(sout2[0],result.url,sout2[1],sout2[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone);
+        enobjout = await createObject(sout3[0],result.url,sout3[1],sout3[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone,req.body.Link);
+        deobjout = await createObject(sout[0],result.url,sout[1],sout[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone,req.body.Link);
+        itobjout = await createObject(sout1[0],result.url,sout1[1],sout1[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone,req.body.Link);
+        csobjout = await createObject(sout2[0],result.url,sout2[1],sout2[2],req.body.Map,req.body.Type,req.body.DirMap,req.body.Phone,req.body.Link);
 
 
         newPlace.En = enobjout
@@ -260,10 +260,10 @@ exports.update_place = async (req, res) => {
     const [sout, sout1, sout2] = translations.map(out => out.split("---"));
 
     // Create translated objects
-    const enobjout = await createObject(req.body.Name, resultUrl, req.body.Description, req.body.ShortDescription, req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone);
-    const deobjout = await createObject(sout[0], resultUrl, sout[1], sout[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone);
-    const itobjout = await createObject(sout1[0], resultUrl, sout1[1], sout1[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone);
-    const csobjout = await createObject(sout2[0], resultUrl, sout2[1], sout2[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone);
+    const enobjout = await createObject(req.body.Name, resultUrl, req.body.Description, req.body.ShortDescription, req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone,req.body.Link);
+    const deobjout = await createObject(sout[0], resultUrl, sout[1], sout[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone,req.body.Link);
+    const itobjout = await createObject(sout1[0], resultUrl, sout1[1], sout1[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone,req.body.Link);
+    const csobjout = await createObject(sout2[0], resultUrl, sout2[1], sout2[2], req.body.Map, req.body.Type, req.body.DirMap, req.body.Phone,req.body.Link);
 
     // Update place object
     place.En = enobjout;
