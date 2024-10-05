@@ -78,7 +78,7 @@ exports.get_place = async (req,res)=>{
 exports.get_by_id = async(req,res)=>{
   try {
     let id = req.params._id
-  const getDetail = await linkModel.findById(id);
+  const getDetail = await placeModel.findById(id);
   
   res.status(200).send(getDetail);
   
